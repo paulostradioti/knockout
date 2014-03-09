@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br">
+<head>
+    <title>Introdução ao KnockoutJS</title>
+    <meta charset="utf-8" />
+    <link rel='stylesheet' href="Content/style.css" />
+    <script type="text/javascript" src="Content/knockout-2.2.0.js"></script>
+
+</head>
+<body>
+    <h1>Hello KnockoutJS World!</h1>
+    <p>Carrinho de Compras do <span data-bind="text: fullName"></span></p>
+    <button data-bind="click: checkout">Checkout</button>
+
+    <h2>Produtos</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Preço</th>
+                <th>Remover</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: shoppingCart">
+            <tr>
+                <td data-bind="text: name"></td>
+                <td data-bind="text: price"></td>
+                <td><button data-bind="click: $root.removeProduct">Remover Produto</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button data-bind="click: addProduct">Add Beer</button>
+    <button data-bind="click: atualizaCarrinho">Atualiza Carrinho</button>
+
+    <script type="text/javascript">
+
+        function Product(name, price) {
+            var self = this;
+            self.name = ko.observable(name);
+            self.price = ko.observable(price);
+        };
+
+        function Person() {
+            var self = this;
+
+            self.firstName = ko.observable("Paulo");
+            self.lastName = ko.observable("Ricardo");
+            self.fullName = ko.computed(function () {
+                return self.firstName() + " " + self.lastName();
+            }, self);
+            self.shoppingCart = ko.observableArray(
+                [
+                    new Product("Bear", 10.99),
+                    new Product("Brats", 7.99),
+                    new Product("Buns", 1.44)
+                ]
+                );
+
+
+            self.checkout = function () {
+                alert("Tentando fazer checkout");
+            };
+            self.addProduct = function () {
+                self.shoppingCart.push(new Product("More Beer", 10.99));
+            };
+            self.removeProduct = function (product) {
+                self.shoppingCart.destroy(product);
+            };
+
+            self.atualizaCarrinho = function () {
+                self.shoppingCart.valueHasMutated();
+            };
+        };
+
+        var personViewModel = new Person();
+
+        ko.applyBindings(personViewModel);
+
+        var underlyingArray = personViewModel.shoppingCart();
+        underlyingArray[0] = new Product("teste", 1.99);
+
+    </script>
+</body>
+</html>

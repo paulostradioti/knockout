@@ -1,0 +1,5 @@
+c:\users\paulo\documents\visual studio 2012\Projects\KnockoutJS\KnockoutJS\bin\KnockoutJS.dll
+c:\users\paulo\documents\visual studio 2012\Projects\KnockoutJS\KnockoutJS\bin\KnockoutJS.pdb
+c:\users\paulo\documents\visual studio 2012\Projects\KnockoutJS\KnockoutJS\obj\Debug\KnockoutJS.csprojResolveAssemblyReference.cache
+c:\users\paulo\documents\visual studio 2012\Projects\KnockoutJS\KnockoutJS\obj\Debug\KnockoutJS.dll
+c:\users\paulo\documents\visual studio 2012\Projects\KnockoutJS\KnockoutJS\obj\Debug\KnockoutJS.pdb
